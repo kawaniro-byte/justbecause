@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Our Anniversary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff3f1;--bg2:#fbdde1;--ink:#4a1626;--muted:#8a5565;--rose:#c2455f;--gold:#a97a2f;--card:#ffffffd9;--line:#e9b7c0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c050f;--bg2:#2c0a1a;--ink:#fbe6e6;--muted:#d1a2ad;--rose:#ff7a93;--gold:#e6c27a;--card:#3a0f2099;--line:#6b2740}}
+:root[data-theme="dark"]{--bg:#1c050f;--bg2:#2c0a1a;--ink:#fbe6e6;--muted:#d1a2ad;--rose:#ff7a93;--gold:#e6c27a;--card:#3a0f2099;--line:#6b2740}
+*,*::before,*::after{box-sizing:inherit}
+html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:20px;line-height:1.6;overflow-x:hidden}
+.script{font-family:'Pinyon Script','Snell Roundhand',cursive;font-weight:400}
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.trail{position:fixed;pointer-events:none;color:var(--rose);z-index:20;font-size:16px}
+section{position:relative;padding:110px 24px}
+h2{font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(2.6rem,7vw,4.2rem);line-height:1.1;margin:0 0 .4em;text-align:center;color:var(--rose)}
+.lead{text-align:center;color:var(--muted);font-style:italic;max-width:520px;margin:0 auto 50px}
+
+/* hero */
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;color:#ffe9e6;overflow:hidden;padding-top:60px;background:radial-gradient(ellipse at 50% 28%,#6b1530 0%,#2a0714 58%,#12030a 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none}
+.o1{width:340px;height:340px;background:#e0486d;left:-90px;top:8%}
+.o2{width:300px;height:300px;background:#d9a45b;right:-80px;bottom:6%}
+.hero-in{position:relative;z-index:2}
+.hero svg{width:min(150px,34vw);overflow:visible;filter:drop-shadow(0 0 18px #ff4d79aa)}
+.hero svg path{fill:#ff4d7900;stroke:#ff9db3;stroke-width:1.6;stroke-linecap:round}
+.names{font-family:'Pinyon Script',cursive;font-size:clamp(3.6rem,13vw,8.5rem);line-height:1.05;margin:.15em 0 .1em;text-shadow:0 0 40px #ff5a8099}
+.names .nm{display:inline-block;white-space:nowrap}
+.amp{display:inline-block;color:var(--goldh,#e6c27a);margin:0 .18em;font-size:.7em}
+.ch{display:inline-block;white-space:pre}
+.sub{font-style:italic;font-size:clamp(1.1rem,3vw,1.5rem);color:#f6c9d0;max-width:520px;margin:0 auto}
+.cue{margin-top:44px;display:inline-block;color:#e6c27a;font-size:1rem;opacity:.85}
+.cue i{display:block;width:1px;height:46px;margin:8px auto 0;background:linear-gradient(#e6c27a,transparent)}
+
+/* counter */
+.ticks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:720px;margin:auto}
+.tick{text-align:center;padding:26px 6px;border:1px solid var(--line);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:var(--card)}
+.tick b{display:block;font-weight:300;font-size:clamp(1.8rem,6vw,3.2rem);line-height:1;color:var(--rose);font-variant-numeric:tabular-nums}
+.tick span{font-style:italic;color:var(--muted);font-size:.95rem}
+
+/* timeline */
+.story{background:var(--bg2)}
+.tl{position:relative;max-width:640px;margin:auto;padding-left:44px}
+.tl::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.fill{position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--rose),var(--gold));transform-origin:top;transform:scaleY(0)}
+.ev{position:relative;margin-bottom:56px}
+.ev::before{content:"♥";position:absolute;left:-44px;top:-2px;width:22px;text-align:center;font-size:22px;line-height:1;color:var(--rose);background:var(--bg2)}
+.ev h3{font-family:'Pinyon Script',cursive;font-weight:400;font-size:2.1rem;margin:0;color:var(--gold)}
+.ev p{margin:.2em 0 0;max-width:46ch}
+
+/* letter */
+.paper{max-width:620px;margin:auto;padding:54px clamp(24px,6vw,64px);background:var(--card);border:1px solid var(--line);border-radius:6px;box-shadow:0 30px 70px -30px #c2455f66}
+.paper h3{font-family:'Pinyon Script',cursive;font-weight:400;font-size:2.4rem;margin:0 0 .3em;color:var(--rose)}
+.paper p{font-size:1.3rem;line-height:1.85;margin:0 0 1em}
+.w{opacity:.14;display:inline-block;white-space:pre}
+.sig{text-align:right;font-family:'Pinyon Script',cursive;font-size:2.2rem;color:var(--rose)}
+
+/* reasons */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;max-width:940px;margin:auto}
+.card{perspective:800px;height:210px;cursor:pointer;border:0;background:none;padding:0;font:inherit;color:inherit}
+.card:focus-visible{outline:2px solid var(--rose);outline-offset:4px;border-radius:20px}
+.in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.card.flip .in{transform:rotateY(180deg)}
+.f,.b{position:absolute;inset:0;backface-visibility:hidden;display:grid;place-items:center;text-align:center;padding:20px;border-radius:90px 90px 24px 24px;border:1px solid var(--line)}
+.f{background:var(--card);color:var(--rose);font-size:3.4rem}
+.f small{display:block;font-size:1rem;color:var(--muted);font-style:italic}
+.b{transform:rotateY(180deg);background:linear-gradient(160deg,#c2455f,#7d1634);color:#fff0ee;font-size:1.3rem;font-style:italic;line-height:1.35}
+
+/* finale */
+.end{text-align:center;color:#ffe9e6;min-height:90svh;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 70%,#6b1530 0%,#2a0714 60%,#12030a 100%)}
+.end h2{color:#ffd9de;font-size:clamp(3rem,11vw,6.5rem);text-shadow:0 0 40px #ff5a8099}
+.end p{color:#f6c9d0;font-style:italic;font-size:1.3rem;margin:0 0 34px}
+.btn{font:inherit;font-size:1.25rem;color:#2a0714;background:linear-gradient(135deg,#f7d58b,#e6a95a);border:0;border-radius:40px;padding:14px 38px;cursor:pointer;box-shadow:0 10px 40px -8px #e6a95a;transition:transform .25s}
+.btn:hover{transform:scale(1.06)}
+.btn:focus-visible,.fab:focus-visible{outline:2px solid #fff;outline-offset:3px}
+footer{padding:24px;text-align:center;color:var(--muted);font-style:italic;background:#12030a}
+
+/* song */
+.box{max-width:520px;margin:auto}
+.box iframe{display:block;border:0;border-radius:12px}
+.empty{margin:0;padding:26px;text-align:center;font-style:italic;color:var(--muted);border:1px dashed var(--line);border-radius:14px;background:var(--card)}
+.alt{display:block;text-align:center;margin-top:12px;color:var(--rose);font-size:.95rem}
+
+/* garden */
+.garden{background:linear-gradient(180deg,#0b1a3a,#16396b 70%,#0f2a52);padding-bottom:0;overflow:hidden}
+.garden h2{color:#bfe3ff;text-shadow:0 0 30px #5fa8ff88}
+.garden .lead{color:#9cc3ee}
+#garden{display:block;width:100%;max-width:900px;margin:0 auto}
+.stem{fill:none;stroke:#5fa38c;stroke-width:3;stroke-linecap:round}
+.lf{fill:#4e9a84;opacity:.85}
+
+/* edit words */
+.editing [contenteditable]{outline:1px dashed var(--rose);outline-offset:4px;border-radius:4px;cursor:text}
+.editing [contenteditable]:focus{outline:2px solid var(--rose);background:#ff7a9322}
+.editing .hero [contenteditable],.editing .end [contenteditable]{outline-color:#ffb3c2}
+.editing .card .in{transform:rotateY(180deg)}
+.editing .card{cursor:default}
+div.btn{display:inline-block}
+#etoggle{left:auto;right:16px}
+
+/* personalise */
+.fab{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;font:inherit;font-size:1rem;color:#fff0ee;background:#7d1634cc;border:1px solid #ff9db3;border-radius:30px;padding:8px 16px;cursor:pointer;backdrop-filter:blur(6px)}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);padding:26px;width:min(92vw,380px)}
+dialog::backdrop{background:#12030acc}
+dialog h3{margin:0 0 12px;font-family:'Pinyon Script',cursive;font-weight:400;font-size:2rem;color:var(--rose)}
+dialog label{display:block;margin:10px 0 2px;color:var(--muted);font-size:.95rem}
+dialog input{width:100%;font:inherit;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+dialog .btn{margin-top:18px;font-size:1.05rem;padding:10px 26px}
+@media(max-width:560px){.ticks{grid-template-columns:repeat(2,1fr)}section{padding:84px 20px}}
+@media(prefers-reduced-motion:reduce){.in{transition:none}}
+</style>
+</head>
+<body>
+<canvas id="petals" aria-hidden="true"></canvas>
+
+<header class="hero">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="hero-in">
+    <svg id="heart" viewBox="-2 -2 104 90" aria-hidden="true"><path d="M50 85C10 55 0 35 0 22 0 8 12 0 25 0 37 0 46 7 50 15 54 7 63 0 75 0 88 0 100 8 100 22 100 35 90 55 50 85Z"/></svg>
+    <h1 class="names" aria-label="Anniversary names"></h1>
+    <p class="sub">Every day with you is my favourite chapter of our story.</p>
+    <span class="cue"><span>scroll gently</span><i></i></span>
+  </div>
+</header>
+
+<section>
+  <h2>Our time together</h2>
+  <p class="lead">Every second of it, a gift I never want to unwrap too quickly.</p>
+  <div class="ticks">
+    <div class="tick"><b id="d">0</b><span>days</span></div>
+    <div class="tick"><b id="h">0</b><span>hours</span></div>
+    <div class="tick"><b id="m">0</b><span>minutes</span></div>
+    <div class="tick"><b id="s">0</b><span>seconds</span></div>
+  </div>
+</section>
+
+<section class="story">
+  <h2>How we began</h2>
+  <p class="lead">A few of the moments that became everything.</p>
+  <div class="tl"><div class="fill"></div></div>
+</section>
+
+<section>
+  <div class="paper">
+    <h3>My love,</h3>
+    <div id="letter"></div>
+    <div class="sig">Forever yours</div>
+  </div>
+</section>
+
+<section class="story">
+  <h2>Our song</h2>
+  <p class="lead">The one that plays whenever I think of you.</p>
+  <div class="box" id="songbox"></div>
+</section>
+
+<section class="garden">
+  <h2>Your favorite flowers</h2>
+  <p class="lead">Blue and sky blue, because you love them, and I love you.</p>
+  <svg id="garden" viewBox="0 0 800 360" role="img" aria-label="A garden of blue and sky blue flowers"></svg>
+</section>
+
+<section class="story">
+  <h2>Reasons I love you</h2>
+  <p class="lead">Tap a heart. Each one holds a little truth.</p>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="end">
+  <div>
+    <h2>Happy Anniversary</h2>
+    <p>Here’s to every tomorrow with you.</p>
+    <div class="btn" id="go" role="button" tabindex="0">Open your surprise</div>
+  </div>
+</section>
+<footer>Made with love, one petal at a time.</footer>
+
+<button class="fab" id="edit">✎ Make it ours</button>
+<button class="fab" id="etoggle">✎ Edit words</button>
+<dialog id="dlg">
+  <h3>Make it ours</h3>
+  <label for="n1">Your name</label><input id="n1">
+  <label for="n2">Their name</label><input id="n2">
+  <label for="dt">The day it all began</label><input id="dt" type="date">
+  <label for="sp">Your song (Spotify link)</label><input id="sp" type="url" placeholder="https://open.spotify.com/track/…">
+  <button class="btn" id="save">Save</button>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+const cfg={a:'Aria',b:'Leo',date:'2021-02-14',song:''};
+try{const s=JSON.parse(localStorage.getItem('annv')||'null');if(s)Object.assign(cfg,s)}catch(e){}
+const story=[
+ ['The day we met','A glance, a smile, and somehow the whole world rearranged itself around you.'],
+ ['Our first date','Nervous laughter, shared dessert, and the quiet knowing that this was something special.'],
+ ['The moment I knew','Somewhere between ordinary and everything, I realised home was a person.'],
+ ['Today','Still choosing you. Still falling. Every single day.']];
+const reasons=['Your laugh','The way you hold my hand','You make ordinary days feel like holidays','Your kindness','You believe in me','Our late night talks','Your warm hugs','With you, I’m home'];
+let letter='From the very first hello, you made my heart a little braver and my days a little softer. Thank you for the quiet mornings, the laughter that fills every room, and the way you love me exactly as I am. If I could choose again, in every life and every world, I would always find my way to you.';
+const $=s=>document.querySelector(s);
+gsap.registerPlugin(ScrollTrigger);
+let sv={};try{sv=JSON.parse(localStorage.getItem('annv2')||'{}')}catch(e){}
+if(sv.story)sv.story.forEach((x,i)=>{if(story[i])story[i]=x});
+if(sv.reasons)sv.reasons.forEach((x,i)=>{if(x)reasons[i]=x});
+if(sv.letter)letter=sv.letter;
+const ED=[...document.querySelectorAll('section h2,section .lead,.paper h3,.sig,.tick span,.end p,.sub,.cue span,#go,footer')];
+if(sv.t)ED.forEach((n,i)=>{if(sv.t[i])n.textContent=sv.t[i]});
+
+/* petals (canvas) */
+const cv=$('#petals'),cx=cv.getContext('2d');let W,H;const P=[];
+const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};addEventListener('resize',rs);rs();
+const mk=y=>({x:Math.random()*W,y:y===undefined?Math.random()*H:y,s:6+Math.random()*9,v:.4+Math.random()*.9,w:Math.random()*6,r:Math.random()*6,vr:(Math.random()-.5)*.03,h:340+Math.random()*20});
+for(let i=0;i<30;i++)P.push(mk());
+(function f(){cx.clearRect(0,0,W,H);for(const p of P){p.y+=p.v;p.w+=.015;p.x+=Math.sin(p.w)*.6;p.r+=p.vr;if(p.y>H+20)Object.assign(p,mk(-20));
+cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.globalAlpha=.55;cx.fillStyle='hsl('+p.h+',78%,'+(62+p.s)+'%)';cx.beginPath();cx.moveTo(0,-p.s);cx.bezierCurveTo(p.s,-p.s*.6,p.s*.8,p.s*.8,0,p.s);cx.bezierCurveTo(-p.s*.8,p.s*.8,-p.s,-p.s*.6,0,-p.s);cx.fill();cx.restore()}
+requestAnimationFrame(f)})();
+
+/* heart trail */
+let lx=0,ly=0;
+addEventListener('pointermove',e=>{if(Math.hypot(e.clientX-lx,e.clientY-ly)<30)return;lx=e.clientX;ly=e.clientY;
+const s=document.createElement('span');s.className='trail';s.textContent='♥';s.style.left=lx+'px';s.style.top=ly+'px';document.body.appendChild(s);
+gsap.fromTo(s,{xPercent:-50,yPercent:-50,scale:.6,opacity:.9},{y:-42,x:(Math.random()-.5)*34,scale:1.3,opacity:0,duration:1.2,ease:'power1.out',onComplete:()=>s.remove()})});
+
+/* hero: names (GSAP) + drawn heart (Anime.js) */
+function names(){const el=$('.names');el.innerHTML='';
+[cfg.a,'&',cfg.b].forEach((t,i)=>{const w=document.createElement('span');w.className=i==1?'amp':'nm';
+[...t].forEach(c=>{const s=document.createElement('span');s.className='ch';s.textContent=c;w.appendChild(s)});el.appendChild(w);if(i!=1)el.appendChild(document.createTextNode(' '))});
+gsap.from('.ch',{y:50,opacity:0,filter:'blur(10px)',stagger:.07,duration:1.3,ease:'power3.out',delay:2.2})}
+anime({targets:'#heart path',strokeDashoffset:[anime.setDashoffset,0],duration:2400,easing:'easeInOutSine'});
+anime({targets:'#heart path',fill:['rgba(255,77,121,0)','rgba(255,77,121,.85)'],duration:1200,delay:2300,easing:'easeOutQuad',complete:()=>anime({targets:'#heart',scale:[1,1.12],duration:900,direction:'alternate',loop:true,easing:'easeInOutSine'})});
+gsap.to('.o1',{x:80,y:60,duration:7,yoyo:true,repeat:-1,ease:'sine.inOut'});
+gsap.to('.o2',{x:-70,y:-50,duration:8,yoyo:true,repeat:-1,ease:'sine.inOut'});
+gsap.from(['.sub','.cue'],{opacity:0,y:20,duration:1.4,delay:3.4,stagger:.3});
+names();
+
+/* counter */
+function tick(){let t=Math.max(0,Date.now()-new Date(cfg.date+'T00:00:00').getTime())/1000;
+$('#d').textContent=Math.floor(t/86400).toLocaleString();$('#h').textContent=Math.floor(t/3600)%24;$('#m').textContent=Math.floor(t/60)%60;$('#s').textContent=Math.floor(t)%60}
+tick();setInterval(tick,1000);
+
+/* timeline (ScrollTrigger) */
+story.forEach(([h,p])=>{const e=document.createElement('div');e.className='ev';e.innerHTML='<h3></h3><p></p>';e.firstChild.textContent=h;e.lastChild.textContent=p;$('.tl').appendChild(e)});
+gsap.to('.fill',{scaleY:1,ease:'none',scrollTrigger:{trigger:'.tl',start:'top 70%',end:'bottom 60%',scrub:true}});
+gsap.utils.toArray('.ev').forEach(e=>gsap.from(e,{opacity:0,x:-30,duration:1,scrollTrigger:{trigger:e,start:'top 85%'}}));
+
+/* letter: words awaken as you scroll */
+let lt;
+function buildLetter(){const L=$('#letter');L.style.whiteSpace='';L.innerHTML='';if(lt){lt.scrollTrigger.kill();lt.kill()}
+letter.split(/\n+/).filter(Boolean).forEach(par=>{const p=document.createElement('p');par.trim().split(/\s+/).forEach(w=>{const s=document.createElement('span');s.className='w';s.textContent=w+' ';p.appendChild(s)});L.appendChild(p)});
+lt=gsap.to('.w',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'.paper',start:'top 65%',end:'bottom 70%',scrub:true}});ScrollTrigger.refresh()}
+buildLetter();
+
+/* reasons */
+const hp=confetti.shapeFromPath({path:'M167 72c19,-38 37,-56 75,-56 42,0 76,33 76,75 0,76 -76,151 -151,227 -76,-76 -151,-151 -151,-227 0,-42 33,-75 75,-75 38,0 57,18 76,56z'});
+const cols=['#ff4d79','#ff9db3','#e6c27a','#ffffff'];
+reasons.forEach((r,i)=>{const b=document.createElement('div');b.className='card';b.innerHTML='<div class="in"><div class="f"><div>♥<small></small></div></div><div class="b"></div></div>';
+b.querySelector('small').textContent='reason '+(i+1);b.querySelector('.b').textContent=r;
+b.tabIndex=0;b.setAttribute('role','button');b.onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&e.target===b){e.preventDefault();b.click()}};
+b.onclick=e=>{if(document.body.classList.contains('editing'))return;b.classList.toggle('flip');confetti({particleCount:14,spread:60,startVelocity:22,origin:{x:e.clientX/innerWidth,y:e.clientY/innerHeight},shapes:[hp],scalar:1.6,colors:cols,ticks:120})};
+$('#grid').appendChild(b)});
+gsap.from('.card',{opacity:0,y:40,rotate:-4,stagger:.08,duration:.9,ease:'back.out(1.6)',scrollTrigger:{trigger:'#grid',start:'top 85%'}});
+
+/* song (Spotify embed) */
+function song(){const m=(cfg.song||'').match(/(track|album|playlist)\/([A-Za-z0-9]+)/),box=$('#songbox');
+if(!m){box.innerHTML='<p class="empty">Add your song’s Spotify link under “✎ Make it ours” and it will play right here.</p>';return}
+box.innerHTML='<iframe title="Our song on Spotify" src="https://open.spotify.com/embed/'+m[1]+'/'+m[2]+'?theme=0" width="100%" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe><a class="alt" href="https://open.spotify.com/'+m[1]+'/'+m[2]+'" target="_blank" rel="noopener">Player not showing? Open it in Spotify</a>'}
+song();
+
+/* blue flower garden: stems draw, blooms open, then sway */
+(function(){const BL=['#2f5fd0','#4f86ee','#8fc9ff','#b9e0ff'];
+const pl=[[90,170,26,0],[190,120,34,1],[290,200,24,2],[390,90,40,0],[490,150,30,3],[590,110,36,1],[690,185,26,2],[140,250,22,3],[540,240,22,0],[740,260,20,1]];
+let h='';pl.forEach(([x,y,r,c],i)=>{const my=(360+y)/2,o=(i%2?1:-1)*24;
+h+='<g class="pl" data-x="'+x+'"><path class="stem" d="M'+x+' 360C'+(x+o)+' '+(my+30)+' '+(x-o)+' '+(my-30)+' '+x+' '+y+'"/>';
+h+='<ellipse class="lf" cx="'+(x+o*.9)+'" cy="'+(my+40)+'" rx="7" ry="20" transform="rotate('+(o>0?55:-55)+' '+(x+o*.9)+' '+(my+40)+')"/>';
+h+='<g class="fl" data-o="'+x+' '+y+'">';
+for(let k=0;k<5;k++)h+='<ellipse cx="'+x+'" cy="'+(y-r*.62)+'" rx="'+(r*.4)+'" ry="'+(r*.62)+'" fill="'+BL[c]+'" opacity=".93" transform="rotate('+(k*72)+' '+x+' '+y+')"/>';
+for(let k=0;k<5;k++)h+='<ellipse cx="'+x+'" cy="'+(y-r*.4)+'" rx="'+(r*.2)+'" ry="'+(r*.4)+'" fill="'+BL[(c+2)%4]+'" opacity=".8" transform="rotate('+(k*72+36)+' '+x+' '+y+')"/>';
+h+='<circle cx="'+x+'" cy="'+y+'" r="'+(r*.17)+'" fill="#f7d58b"/></g></g>'});
+$('#garden').innerHTML=h;
+const st=gsap.utils.toArray('.stem');st.forEach(s=>{const l=s.getTotalLength();s.style.strokeDasharray=l;s.style.strokeDashoffset=l});
+gsap.timeline({scrollTrigger:{trigger:'#garden',start:'top 78%'}})
+.to(st,{strokeDashoffset:0,duration:1.6,stagger:.12,ease:'power2.out'})
+.from('.lf',{opacity:0,duration:1,stagger:.1},.5)
+.from('.fl',{scale:0,rotation:-80,opacity:0,svgOrigin:(i,el)=>el.dataset.o,duration:1.4,stagger:.14,ease:'back.out(1.7)'},.9)
+.add(()=>gsap.utils.toArray('.pl').forEach((p,i)=>gsap.to(p,{rotation:i%2?2.5:-2.5,svgOrigin:p.dataset.x+' 360',duration:3+i*.3,yoyo:true,repeat:-1,ease:'sine.inOut'})));
+})();
+
+/* finale */
+gsap.from('.end h2',{scale:.6,opacity:0,duration:1.6,ease:'elastic.out(1,.6)',scrollTrigger:{trigger:'.end',start:'top 60%'}});
+$('#go').onclick=()=>{if(ed)return;const end=Date.now()+4500;
+(function f(){confetti({particleCount:4,angle:60,spread:70,origin:{x:0,y:.85},shapes:[hp],scalar:2.2,colors:cols});
+confetti({particleCount:4,angle:120,spread:70,origin:{x:1,y:.85},shapes:[hp],scalar:2.2,colors:cols});
+if(Date.now()<end)requestAnimationFrame(f)})();
+gsap.fromTo('.end h2',{scale:1},{scale:1.08,yoyo:true,repeat:5,duration:.45,ease:'sine.inOut'})};
+
+/* edit words: every title, line and paragraph */
+const eb=$('#etoggle');let ed=false;
+$('#go').onkeydown=e=>{if(!ed&&(e.key==='Enter'||e.key===' ')){e.preventDefault();$('#go').click()}};
+document.addEventListener('keydown',e=>{if(ed&&e.key==='Enter'&&e.target.id!=='letter'&&e.target.isContentEditable){e.preventDefault();e.target.blur()}});
+document.addEventListener('paste',e=>{if(ed&&e.target.isContentEditable){e.preventDefault();document.execCommand('insertText',false,(e.clipboardData||window.clipboardData).getData('text'))}});
+function setEd(on){ed=on;document.body.classList.toggle('editing',on);eb.textContent=on?'✓ Done editing':'✎ Edit words';
+const L=$('#letter'),T=[...ED,...document.querySelectorAll('.ev h3,.ev p,.card .b'),L];
+if(on){L.textContent=letter;L.style.whiteSpace='pre-wrap';
+T.forEach(n=>{try{n.contentEditable='plaintext-only'}catch(x){n.contentEditable='true'}});
+scrollTo({top:0,behavior:'smooth'})}
+else{T.forEach(n=>n.removeAttribute('contenteditable'));letter=L.innerText.trim()||letter;
+sv={t:ED.map(n=>n.innerText.trim()),story:[...document.querySelectorAll('.ev')].map(e=>[e.querySelector('h3').innerText.trim(),e.querySelector('p').innerText.trim()]),reasons:[...document.querySelectorAll('.card .b')].map(n=>n.innerText.trim()),letter};
+try{localStorage.setItem('annv2',JSON.stringify(sv))}catch(x){}
+buildLetter()}}
+eb.onclick=()=>setEd(!ed);
+
+/* personalise */
+const dlg=$('#dlg');
+$('#edit').onclick=()=>{$('#n1').value=cfg.a;$('#n2').value=cfg.b;$('#dt').value=cfg.date;$('#sp').value=cfg.song;dlg.showModal()};
+$('#save').onclick=()=>{cfg.a=$('#n1').value.trim()||cfg.a;cfg.b=$('#n2').value.trim()||cfg.b;cfg.date=$('#dt').value||cfg.date;cfg.song=$('#sp').value.trim();
+try{localStorage.setItem('annv',JSON.stringify(cfg))}catch(e){}
+dlg.close();names();tick();song()};
+</script>
+</body>
+</html>
